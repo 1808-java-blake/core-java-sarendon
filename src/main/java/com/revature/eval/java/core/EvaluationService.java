@@ -1,6 +1,8 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class EvaluationService {
 	 */
 	public String reverse(String string) {
 		char[] reversed = new char[string.length()];
-		for (int i = reversed.length - 1, j=0; i >= 0; i--, j++) {
+		for (int i = reversed.length - 1, j = 0; i >= 0; i--, j++) {
 			reversed[j] = string.charAt(i);
 		}
 		return new String(reversed);
@@ -30,8 +32,27 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		// Write an implementation for this method declaration
+		String s = phrase;
+		ArrayList<Character> A = new ArrayList<Character>();
+		int l = s.length(); // length of string s
+		String F = "";
+
+		F += s.charAt(0);
+
+		for (int i = 0; i < l - 1; i++) {
+
+			if (s.charAt(i) == ' ' || s.charAt(i) == '-') {
+
+				F += s.charAt(i + 1);
+
+			}
+
+		}
+
+		F = F.toUpperCase();
+
+		return F;
 	}
 
 	/**
@@ -85,19 +106,46 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if ((sideOne == sideTwo) && (sideTwo == sideThree)) {
+				// System.out.println("This Triangle is Equilateral");
+				return true;
+
+			} else {
+				return false;
+			}
+
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			if (sideTwo == sideThree && sideTwo != sideOne) {
+				// System.out.println("This Triangle is Isoceles");
+				return true;
+			}
+			if (sideOne == sideThree && sideOne != sideTwo) {
+				// System.out.println("This Triangle is Isoceles");
+				return true;
+			}
+
+			if (sideOne == sideTwo && sideThree != sideOne) {
+				// System.out.println("This Triangle is Isoceles");
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
-			return false;
-		}
+			if ((sideOne != sideTwo) && (sideTwo != sideThree) && (sideThree != sideOne)) {
+				// System.out.println("This Triangle is Scalene");
+				return true;
+			}
 
+			else {
+				return false;
+			}
+		}
 	}
 
 	/**
@@ -116,8 +164,226 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		String s = string;
+		int totalScore = 0;
+
+		for (int i = 0; i < s.length(); i++) {
+
+			switch (s.charAt(i)) {
+			case 'A':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'a':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'B':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'b':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'C':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'c':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'D':
+				totalScore = totalScore + 2;
+				System.out.println(totalScore);
+				break;
+			case 'd':
+				totalScore = totalScore + 2;
+				System.out.println(totalScore);
+				break;
+			case 'E':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'e':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'F':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'f':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'G':
+				totalScore = totalScore + 2;
+				System.out.println(totalScore);
+				break;
+			case 'g':
+				totalScore = totalScore + 2;
+				System.out.println(totalScore);
+				break;
+			case 'H':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'h':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'I':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'i':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'J':
+				totalScore = totalScore + 8;
+				System.out.println(totalScore);
+				break;
+			case 'j':
+				totalScore = totalScore + 8;
+				System.out.println(totalScore);
+				break;
+			case 'K':
+				totalScore = totalScore + 5;
+				System.out.println(totalScore);
+				break;
+			case 'k':
+				totalScore = totalScore + 5;
+				System.out.println(totalScore);
+				break;
+			case 'L':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'l':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'M':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'm':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'N':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'n':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'O':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'o':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'P':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'p':
+				totalScore = totalScore + 3;
+				System.out.println(totalScore);
+				break;
+			case 'Q':
+				totalScore = totalScore + 10;
+				System.out.println(totalScore);
+				break;
+			case 'q':
+				totalScore = totalScore + 10;
+				System.out.println(totalScore);
+				break;
+			case 'R':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'r':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'S':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 's':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'T':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 't':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'U':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'u':
+				totalScore = totalScore + 1;
+				System.out.println(totalScore);
+				break;
+			case 'V':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'v':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'W':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'w':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'X':
+				totalScore = totalScore + 8;
+				System.out.println(totalScore);
+				break;
+			case 'x':
+				totalScore = totalScore + 8;
+				System.out.println(totalScore);
+				break;
+			case 'Y':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'y':
+				totalScore = totalScore + 4;
+				System.out.println(totalScore);
+				break;
+			case 'Z':
+				totalScore = totalScore + 10;
+				System.out.println(totalScore);
+				break;
+			case 'z':
+				totalScore = totalScore + 10;
+				System.out.println(totalScore);
+				break;
+
+			}
+
+		}
+
+		return totalScore;
 	}
 
 	/**
@@ -152,8 +418,23 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String s = string;
+		s = s.replace("+1", "");
+		s = s.replace("1 ", "");
+		s = s.replace("(", "");
+		s = s.replace(")", "");
+		s = s.replace("-", "");
+		s = s.replace(".", "");
+		s = s.replace(" ", "");
+		s = s.replaceAll("[a-zA-Z]", "");
+		s = s.replaceAll("[ (]@[.,;?:) ]", "");
+		System.out.println(s);
+
+		if (s.length() != 10) {
+			throw new IllegalArgumentException();
+		}
+
+		return s;
 	}
 
 	/**
@@ -166,8 +447,19 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		Map<String, Integer> maplist = new HashMap<String, Integer>();
+		String[] collection;
+		collection = string.split(" ");
+		collection = string.split("[,]\n");
+		for (String a : collection) {
+			if (!maplist.containsKey(a)) {
+				maplist.put(a, 1);
+			} else {
+				int count = maplist.get(a);
+				maplist.put(a, count + 1);
+			}
+		}
+		return maplist;
 	}
 
 	/**
@@ -246,9 +538,33 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+
+		String s = string;
+		s = s.toLowerCase();
+		String l = "";
+
+		for (int i = 0; i < s.length(); i++) {
+
+			if (s.charAt(i) == 'a' || s.charAt(i) == 'e' || s.charAt(i) == 'i' || s.charAt(i) == 'o'
+					|| s.charAt(i) == 'u') {
+				s = s.substring(i, s.length());
+				s = s + l + "ay";
+				System.out.println(s);
+
+				break;
+			}
+//			else if (s.charAt(i) == 32) {
+//			} 
+			else {
+				l = s.substring(0, i + 1);
+
+			}
+
+		}
+
+		return s;
 	}
+//fix for last case
 
 	/**
 	 * 9. An Armstrong number is a number that is the sum of its own digits each
@@ -267,7 +583,39 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		// armstrong number ex. 153 = 1^3 + 5^3 + 3^3
+
+		double num = input;
+		double digit = 0;
+		double remainder = 0;
+		double armstrong = 0;
+		double temp = num;
+		double check = input;
+
+		// System.out.println("The number is: " + num);
+
+		while (num > 1) {// get number of digits
+			num = num / 10;
+			// System.out.println("This is " + num + " divided by 10");
+			digit++;
+			// System.out.println("The number of digits is: " + digit);
+		}
+
+		while (temp > 0) {
+			remainder = temp % 10;
+			armstrong = armstrong + Math.pow(remainder, digit);
+			System.out.println("The number after this step = " + armstrong);
+			temp = temp - remainder;
+			temp = temp / 10;
+
+			if (temp == 0) {
+				break;
+			}
+
+		}
+
+		return check == armstrong;
+
 	}
 
 	/**
@@ -282,7 +630,45 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		List<Long> factortree = new ArrayList<Long>();
+		long temp = l;
+		int i = 1;// increment
+		long temp2 = l;
+
+		if (temp % 2 == 0) {// if even
+			while (temp % 2 == 0) {
+				temp = temp / 2;
+				System.out.println("i is =  " + i);
+				factortree.add(2l);
+				System.out.println("this is temp: " + temp);
+			}
+
+			if (temp != 1) {
+				factortree.add(temp);
+			}
+
+		}
+
+		else {// odd
+			for (long j = 3; j <= Math.sqrt(temp2); j += 2) {
+				
+				while (temp2 % j == 0) {
+					System.out.print("This is J: " + j);
+					System.out.println("\n");
+					temp2 /= j;
+					System.out.println("this is temp2: " + temp2);
+					System.out.println("\n");
+					factortree.add(j);
+					System.out.println("temp 2 has been added");
+				}
+
+			}
+			if (temp2 != 1) {
+				factortree.add(temp2);
+			}
+
+		}
+		return factortree;
 	}
 
 	/**
@@ -338,10 +724,34 @@ public class EvaluationService {
 	 * @param i
 	 * @return
 	 */
-	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
+	public int calculateNthPrime(int primecount) {
+		
+		
+		 int i;
+		 int count = 0;
+		 int num = 1;
+		 
+		 
+	        if(primecount == 0) {
+	            throw new IllegalArgumentException();
+	        }//end if
+	        
+	        while(count < primecount) {
+	            num += 1;
+	            for(i = 2; i <= num; i++) {
+	                if(num % i == 0) {
+	                    break;
+	                }
+	                
+	            }
+	            if(i == num) {
+	                count += 1;
+	            }
+	        }//end while
+	        System.out.println(num);
+	        return num ;
+	    }//end method
+		
 
 	/**
 	 * 13 & 14. Create an implementation of the atbash cipher, an ancient encryption
@@ -415,8 +825,59 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		int con = 10;
+		boolean checkforx;
+		boolean checkforletters;
+		String s = "3-598-21508-8";
+		s = s.replace("-", "");
+		checkforx = s.matches("X");
+		checkforletters = s.matches("ABCDEFGHIJKLMNOPQRSTUVWYZ");
+		String[]  Snew = s.split("") ;
+		long [] newval = new long[Snew.length];
+		long [] check = newval;
+		long add = 0l;
+		long lastcheck;
+		boolean finalcheck = false;
+		
+		if(checkforx == true) {
+			s.replaceAll("X", "10");
+		}
+	
+		if(checkforletters = true) {
+			finalcheck = false;
+		}
+		
+		
+		for(int i = 0 ; i < Snew.length;i++)//make array of long of multiplied values
+		{
+			newval[i] = Long.parseLong(Snew[i]);
+			System.out.println(newval[i]);
+			System.out.println("this is newval : " + newval[i] );
+			System.out.println("this is con-i : " + (con - i));
+			check[i] = (newval[i])*(con-i);
+			System.out.println("This is check value: " + check[i]);
+			
+		}
+		
+		for(int i = 0; i < check.length;i++) {
+			
+			add = add + check[i];
+		}
+
+		
+		lastcheck = add%11;
+		
+		if(lastcheck == 0) {
+			finalcheck = true;
+		}
+		
+		
+		else if(lastcheck != 0){
+			finalcheck = false;
+		}
+		return finalcheck;
+		
+		
 	}
 
 	/**
@@ -433,9 +894,34 @@ public class EvaluationService {
 	 * @return
 	 */
 	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+
+		boolean check = false;
+		String s = string;
+
+		int[] a = new int[26];
+		int count = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) >= 65 && s.charAt(i) <= 90) {
+				if (a[s.charAt(i) - 65] == 0)
+					count++;
+				a[s.charAt(i) - 65]++;
+			} else if (s.charAt(i) >= 97 && s.charAt(i) <= 122) {
+				if (a[s.charAt(i) - 97] == 0)
+					count++;
+				a[s.charAt(i) - 97]++;
+			}
+		}
+
+		if (count == 26) {
+			check = true;
+		}
+
+		else
+		check = false;
+
+		return check;
 	}
+
 
 	/**
 	 * 17. Calculate the moment when someone has lived for 10^9 seconds.
