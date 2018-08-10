@@ -1,10 +1,17 @@
 package com.revature.eval.java.core;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class EvaluationService {
 
@@ -651,7 +658,7 @@ public class EvaluationService {
 
 		else {// odd
 			for (long j = 3; j <= Math.sqrt(temp2); j += 2) {
-				
+
 				while (temp2 % j == 0) {
 					System.out.print("This is J: " + j);
 					System.out.println("\n");
@@ -697,20 +704,20 @@ public class EvaluationService {
 	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
 	 * quick brown fox jumps over the lazy dog.
 	 */
-	static class RotationalCipher {
-		private int key;
-
-		public RotationalCipher(int key) {
-			super();
-			this.key = key;
-		}
-
-		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
-		}
-
-	}
+//	static class RotationalCipher {
+//		private int key;
+//
+//		public RotationalCipher(int key) {
+//			super();
+//			this.key = key;
+//		}
+//
+//		public String rotate(String string) {
+//			// TODO Write an implementation for this method declaration
+//			return null;
+//		}
+//
+//	}
 
 	/**
 	 * 12. Given a number n, determine what the nth prime is.
@@ -725,33 +732,30 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int calculateNthPrime(int primecount) {
-		
-		
-		 int i;
-		 int count = 0;
-		 int num = 1;
-		 
-		 
-	        if(primecount == 0) {
-	            throw new IllegalArgumentException();
-	        }//end if
-	        
-	        while(count < primecount) {
-	            num += 1;
-	            for(i = 2; i <= num; i++) {
-	                if(num % i == 0) {
-	                    break;
-	                }
-	                
-	            }
-	            if(i == num) {
-	                count += 1;
-	            }
-	        }//end while
-	        System.out.println(num);
-	        return num ;
-	    }//end method
-		
+
+		int i;
+		int count = 0;
+		int num = 1;
+
+		if (primecount == 0) {
+			throw new IllegalArgumentException();
+		} // end if
+
+		while (count < primecount) {
+			num += 1;
+			for (i = 2; i <= num; i++) {
+				if (num % i == 0) {
+					break;
+				}
+
+			}
+			if (i == num) {
+				count += 1;
+			}
+		} // end while
+		System.out.println(num);
+		return num;
+	}// end method
 
 	/**
 	 * 13 & 14. Create an implementation of the atbash cipher, an ancient encryption
@@ -832,52 +836,48 @@ public class EvaluationService {
 		s = s.replace("-", "");
 		checkforx = s.matches("X");
 		checkforletters = s.matches("ABCDEFGHIJKLMNOPQRSTUVWYZ");
-		String[]  Snew = s.split("") ;
-		long [] newval = new long[Snew.length];
-		long [] check = newval;
+		String[] Snew = s.split("");
+		long[] newval = new long[Snew.length];
+		long[] check = newval;
 		long add = 0l;
 		long lastcheck;
 		boolean finalcheck = false;
-		
-		if(checkforx == true) {
+
+		if (checkforx == true) {
 			s.replaceAll("X", "10");
 		}
-	
-		if(checkforletters = true) {
+
+		if (checkforletters = true) {
 			finalcheck = false;
 		}
-		
-		
-		for(int i = 0 ; i < Snew.length;i++)//make array of long of multiplied values
+
+		for (int i = 0; i < Snew.length; i++)// make array of long of multiplied values
 		{
 			newval[i] = Long.parseLong(Snew[i]);
 			System.out.println(newval[i]);
-			System.out.println("this is newval : " + newval[i] );
+			System.out.println("this is newval : " + newval[i]);
 			System.out.println("this is con-i : " + (con - i));
-			check[i] = (newval[i])*(con-i);
+			check[i] = (newval[i]) * (con - i);
 			System.out.println("This is check value: " + check[i]);
-			
+
 		}
-		
-		for(int i = 0; i < check.length;i++) {
-			
+
+		for (int i = 0; i < check.length; i++) {
+
 			add = add + check[i];
 		}
 
-		
-		lastcheck = add%11;
-		
-		if(lastcheck == 0) {
+		lastcheck = add % 11;
+
+		if (lastcheck == 0) {
 			finalcheck = true;
 		}
-		
-		
-		else if(lastcheck != 0){
+
+		else if (lastcheck != 0) {
 			finalcheck = false;
 		}
 		return finalcheck;
-		
-		
+
 	}
 
 	/**
@@ -917,11 +917,10 @@ public class EvaluationService {
 		}
 
 		else
-		check = false;
+			check = false;
 
 		return check;
 	}
-
 
 	/**
 	 * 17. Calculate the moment when someone has lived for 10^9 seconds.
@@ -932,8 +931,14 @@ public class EvaluationService {
 	 * @return
 	 */
 	public Temporal getGigasecondDate(Temporal given) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		// In case,time not included
+		if (given instanceof LocalDate) {
+			LocalDateTime time = LocalDateTime.of((LocalDate) given, LocalTime.MIN);
+			return time.plus(Duration.ofSeconds(1000000000l));
+		}
+		// if time is included
+		LocalDateTime time = LocalDateTime.from(given);
+		return time.plus(Duration.ofSeconds(1000000000l));
 	}
 
 	/**
@@ -949,9 +954,24 @@ public class EvaluationService {
 	 * @param set
 	 * @return
 	 */
-	public int getSumOfMultiples(int i, int[] set) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	public int getSumOfMultiples(int n, int[] set) {
+		Set<Integer> num = new HashSet<>();
+		int summation = 0;
+		int val = 0;
+		for (int i = 0; i < set.length; i++) {
+			for (int j = 1; j < n; j++) {
+				val = j % set[i];
+				if (val == 0) {
+					num.add(j);
+				}
+			}
+		}
+
+		for (Integer test : num) {
+			summation = summation +  test;
+		}
+
+		return summation;
 	}
 
 	/**
@@ -992,6 +1012,56 @@ public class EvaluationService {
 	 */
 	public boolean isLuhnValid(String string) {
 		// TODO Write an implementation for this method declaration
+		
+		String s = string;
+		s = s.replaceAll("-", " ");
+		s = s.replaceAll(" ", "");
+		String[] numbers = s.split("");
+		int[] doubleval = new int[s.length()];
+		int add = 0;
+		
+		System.out.println("This is s : " + s);
+		System.out.println(Arrays.toString(numbers));
+		
+		boolean check = s.matches(".*\\D+.*");
+		
+		if(check == true) {
+			return false;
+		}
+		
+		for(int i = 0; i < s.length(); i++) {
+		
+	
+			doubleval[i] = Integer.parseInt(numbers[i]);
+			//System.out.println("This is new value before: " + doubleval[i]);
+			
+			if(i%2 != 0) {
+				System.out.println("number at index will be doubled : "+ doubleval[i]);
+				doubleval[i] = doubleval[i]*2;
+				System.out.println("number at index was doubled : "+ doubleval[i]);
+				
+				if(doubleval[i] > 9) {
+					System.out.println("The number doubled is greater than 9 : " + doubleval[i]);
+					doubleval[i] = doubleval[i] - 9;
+					System.out.println("The number has been fixed : " + doubleval[i]);
+				}	
+			}
+			
+		}
+		
+		System.out.println("This is the altered array : " + Arrays.toString(doubleval));
+		
+		for(int j = 0; j<doubleval.length;j++) {
+			add = add + doubleval[j];
+			System.out.println("This is add: " + add);
+		}
+		
+		if(add%10 == 0) {
+			System.out.println("This is confirmed");
+			return true;
+		}
+		
+		
 		return false;
 	}
 
