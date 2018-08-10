@@ -505,27 +505,52 @@ public class EvaluationService {
 	 * 
 	 */
 	static class BinarySearch<T> {
-		private List<T> sortedList;
+        private List<T> sortedList;
 
-		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
-			return 0;
-		}
+        public int indexOf(T t) {
+            // TODO Write an implementation for this method declaration
+            int low = 0;
+            int high = (int) sortedList.size()-1;
+            int key = (int) t;
+            int mid = 0;
+            int found = 0;
+            System.out.println(high);
+            while(low <= high) {
+                mid = (low + high)/2;
+                int midElement = (int) sortedList.get(mid);
+             System.out.println(mid);
+                if(midElement > key) {
+                    high = mid - 1;
+                }
+                else if(midElement < key) {
+                    low = mid + 1;
+                }
+                else if(midElement == key) {
+                    found = mid;
+                    break;
+                }
+            }
+            
+            System.out.println(found);
+            return found;
+        }
 
-		public BinarySearch(List<T> sortedList) {
-			super();
-			this.sortedList = sortedList;
-		}
+        public BinarySearch(List<T> sortedList) {
+            super();
+            this.sortedList = sortedList;
+        }
 
-		public List<T> getSortedList() {
-			return sortedList;
-		}
+        public List<T> getSortedList() {
+            return sortedList;
+        }
 
-		public void setSortedList(List<T> sortedList) {
-			this.sortedList = sortedList;
-		}
+        public void setSortedList(List<T> sortedList) {
+            this.sortedList = sortedList;
+        }
 
-	}
+    }
+
+
 
 	/**
 	 * 8. Implement a program that translates from English to Pig Latin.
@@ -704,20 +729,43 @@ public class EvaluationService {
 	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
 	 * quick brown fox jumps over the lazy dog.
 	 */
-//	static class RotationalCipher {
-//		private int key;
-//
-//		public RotationalCipher(int key) {
-//			super();
-//			this.key = key;
-//		}
-//
-//		public String rotate(String string) {
-//			// TODO Write an implementation for this method declaration
-//			return null;
-//		}
-//
-//	}
+	static class RotationalCipher {
+		private int key;
+
+		public RotationalCipher(int key) {
+			super();
+			this.key = key;
+		}
+
+		public String rotate(String string) {
+			StringBuffer result= new StringBuffer();
+			String other = "1234567890,.;:'!";
+
+			for (int i=0; i < string.length(); i++)
+			{
+				if (string.charAt(i) == ' ' || other.contains("" + string.charAt(i))) {
+					result.append(string.charAt(i));
+				}
+				else if (Character.isUpperCase(string.charAt(i)) && string.charAt(i) != ' ') {
+					System.out.println("upper case check");
+					char ch = (char)(((int)string.charAt(i) +
+									key - 65) % 26 + 65);
+					result.append(ch);
+					}
+				else if (!Character.isUpperCase(string.charAt(i)) && string.charAt(i) != ' '){
+					System.out.println("lower case check");
+					char ch = (char)(((int)string.charAt(i) +
+									key - 97) % 26 + 97);
+					result.append(ch);
+				}
+			}
+			System.out.println(result.toString());
+			return result.toString();
+		}
+
+	}
+
+	
 
 	/**
 	 * 12. Given a number n, determine what the nth prime is.
@@ -790,9 +838,33 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+
+			String s = string;
+			s = s.toLowerCase();
+			s = s.replaceAll("[ ,.]", "");
+			char[] chararray = s.toCharArray();
+			
+					
+			for(int i= 0;i<chararray.length; i++) {
+				if(chararray[i] >=97 || chararray[i] <= 122) {
+				int ascii = Integer.valueOf(chararray[i]);
+				ascii= 97 + (122-ascii);
+				chararray[i] = (char) ascii;
+				}
+			}
+
+			s = String.valueOf(chararray);
+			StringBuilder fin = new StringBuilder(s);
+			
+				for(int j = 5; j<fin.length();j += 6) {
+					
+					fin.insert(j,' ');
+			
 		}
+				
+				return fin.toString();
+	}
+		
 
 		/**
 		 * Question 14
@@ -801,8 +873,11 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			
+			String decoded = encode(string);
+			decoded = decoded.replaceAll(" ", "");
+
+			return decoded;
 		}
 	}
 
